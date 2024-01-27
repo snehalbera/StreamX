@@ -1,11 +1,12 @@
-import { Header, Sidebar } from "./components";
+import { Header, Home, Sidebar } from "./components";
 
 function App() {
     return (
         <>
             <div className="">
                 <Header />
-                <Sidebar />
+                {/* <Sidebar /> */}
+                <Home />
             </div>
         </>
     );

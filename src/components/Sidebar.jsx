@@ -85,9 +85,9 @@ function Sidebar() {
     ];
 
     return (
-        <div className="w-60 h-screen absolute top-0 dark:bg-[#18141f] dark:text-zinc-500">
+        <div className="w-60 h-screen absolute top-0 bg-white dark:bg-[#18141f] dark:text-zinc-500">
             <div className="flex flex-col h-full">
-                <div className="flex gap-5 align-baseline py-3 mb-1">
+                <div className="flex gap-5 align-baseline py-3 my-px border-b border-solid border-zinc-200 dark:border-zinc-800">
                     <span className="pl-4 hover:cursor-pointer">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

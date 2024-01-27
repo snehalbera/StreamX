@@ -29,10 +29,10 @@ function Header() {
                         type="text"
                         name="search-box"
                         id="search-box"
-                        className="py-1 px-3 w-96 outline-none rounded-l-md border border-solid border-zinc-400 dark:bg-zinc-800 dark:text-zinc-200 dark:border-none"
+                        className="py-1 px-3 w-96 outline-none rounded-l-md border border-solid border-zinc-400 dark:bg-zinc-800 dark:text-zinc-200 dark:border-hidden"
                         placeholder="Search"
                     />
-                    <span className="rounded-r-md px-2 border border-solid border-zinc-400 dark:bg-zinc-800 dark:border-none">
+                    <span className="rounded-r-md px-2 border border-solid border-zinc-400 dark:bg-zinc-800 dark:border-hiddenden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 28 24"
