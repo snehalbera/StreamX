@@ -1,9 +1,12 @@
-import { Header } from "./components";
+import { Header, Sidebar } from "./components";
 
 function App() {
     return (
         <>
-            <Header />
+            <div className="">
+                <Header />
+                <Sidebar />
+            </div>
         </>
     );
 }
