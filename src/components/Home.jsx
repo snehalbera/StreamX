@@ -20,7 +20,7 @@ function ButtonList() {
         buttonItems?.length > 0 && (
             <div className="py-5">
                 {buttonItems.map((item) => (
-                    <button className="cursor-pointer rounded-full px-3 py-1 mx-1 font-medium hover:bg-[#b9baf9] dark:hover:bg-[#6366F1] bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200">
+                    <button className="cursor-pointer rounded-full px-3 py-1 mx-1 font-medium bg-zinc-100 text-zinc-500 hover:text-zinc-800 hover:bg-primary dark:hover:text-primary dark:bg-zinc-900 dark:hover:bg-mutedprimary">
                         {item}
                     </button>
                 ))}
@@ -31,10 +31,11 @@ function ButtonList() {
 
 function Home() {
     return (
-        <div className="h-full w-full dark:bg-[#16121C]">
+        <div className="h-full fixed w-full dark:bg-zinc-950">
             <div className="w-11/12 m-auto">
                 <ButtonList />
-                <h2 className="dark:text-white">VideoCard</h2>
+                <div className="h-screen"></div>
+                <h2 className="dark:text-zinc-50">VideoCard</h2>
             </div>
         </div>
     );

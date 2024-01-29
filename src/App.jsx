@@ -1,14 +1,15 @@
-import { Header, Home, Sidebar } from "./components";
+import { Provider } from "react-redux";
+import store from "./app/store";
+import { Header, Home } from "./components";
 
 function App() {
     return (
-        <>
+        <Provider store={store}>
             <div className="">
                 <Header />
-                {/* <Sidebar /> */}
                 <Home />
             </div>
-        </>
+        </Provider>
     );
 }
 

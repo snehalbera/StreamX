@@ -8,8 +8,8 @@ export default {
                 poppins: ["Poppins", "sans"],
             },
             colors: {
-                primary: "#FDD976",
-                secondary: "#744BB9",
+                primary: "#FFC728",
+                mutedprimary: "#332500",
             },
         },
     },
