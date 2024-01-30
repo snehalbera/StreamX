@@ -2,7 +2,7 @@ export const YOUTUBE_VIDEOS_API =
     "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&maxResults=30&key=";
 
 // sample response (YouTube API)
-export const YOUTUBE_RESPONSE = {
+export const YOUTUBE_SAMPLE_RESPONSE = {
     kind: "youtube#videoListResponse",
     etag: "JwKE6uaj1oKpgfIYOEYaQl7hnNU",
     items: [

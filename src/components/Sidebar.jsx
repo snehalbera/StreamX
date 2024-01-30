@@ -1,22 +1,30 @@
-// import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSidebar } from "../app/appSlice";
+import { Link } from "react-router-dom";
 
 function Section({ section }) {
     return (
         <div>
-            {section?.heading && <h2 className="pl-4 mb-3 font-semibold dark:text-zinc-300">{section?.heading}</h2>}
+            {section?.heading && (
+                <h2 className="pl-5 py-1 mb-3 font-semibold text-zinc-600 dark:text-zinc-400">{section?.heading}</h2>
+            )}
             {section?.menuItems?.length > 0 && (
                 <div className="flex flex-col align-baseline gap-4">
                     {section.menuItems.map((menu) => (
-                        <div className="flex hover:cursor-pointer pl-5 gap-5">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 25 20"
-                                fill="currentColor"
-                                className="w-5 h-5">
-                                <path fillRule="evenodd" d={menu.iconPath} clipRule="evenodd" />
-                            </svg>
-                            <h3>{menu.title}</h3>
-                        </div>
+                        <Link to="/">
+                            <div
+                                key={menu.title}
+                                className="flex hover:cursor-pointer pl-5 gap-5 text-zinc-500 hover:text-zinc-800 dark:hover:text-primary">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 25 20"
+                                    fill="currentColor"
+                                    className="w-5 h-5">
+                                    <path fillRule="evenodd" d={menu.iconPath} clipRule="evenodd" />
+                                </svg>
+                                <h3>{menu.title}</h3>
+                            </div>
+                        </Link>
                     ))}
                     <hr className="border-zinc-200 dark:border-zinc-800" />
                 </div>
@@ -84,35 +92,44 @@ function Sidebar() {
         },
     ];
 
-    return (
-        <div className="w-60 h-screen absolute top-0 bg-white dark:bg-[#18141f] dark:text-zinc-500">
-            <div className="flex flex-col h-full">
-                <div className="flex gap-5 align-baseline py-3 my-px border-b border-solid border-zinc-200 dark:border-zinc-800">
-                    <span className="pl-4 hover:cursor-pointer">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 18 24"
-                            fill="currentColor"
-                            className="w-6 h-8 dark:fill-zinc-500">
-                            <path
-                                fillRule="evenodd"
-                                d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </span>
-                    <span className="hover:cursor-pointer">
-                        <h1 className="text-2xl font-bold dark:text-white">
-                            Stream<span className="text-amber-300">X</span>
-                        </h1>
-                    </span>
-                </div>
-                <div className="flex flex-col gap-3 h-full pt-3 border-r border-solid border-zinc-200 dark:border-none">
-                    {sidebarMenu?.length > 0 && sidebarMenu.map((section) => <Section section={section} />)}
+    const isSidebarExpanded = useSelector((store) => store.app.isSidebarOpen);
+    const dispatch = useDispatch();
+    const toggleHandler = () => {
+        dispatch(toggleSidebar());
+    };
+
+    return isSidebarExpanded ? (
+        <div className="w-screen">
+            <div className="w-60 h-screen absolute z-10 top-0 bg-white dark:bg-zinc-950 dark:text-zinc-500">
+                <div className="flex flex-col h-full">
+                    <div className="flex gap-5 align-baseline py-3 border-b border-solid border-zinc-200 dark:border-zinc-800">
+                        <span className="pl-4 hover:cursor-pointer" onClick={() => toggleHandler()}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 18 24"
+                                fill="currentColor"
+                                className="w-6 h-8 dark:fill-zinc-50">
+                                <path
+                                    fillRule="evenodd"
+                                    d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                        </span>
+                        <span className="hover:cursor-pointer mb-px dark:mb-0.5">
+                            <h1 className="text-2xl font-bold dark:text-white">
+                                Stream<span className="text-primary">X</span>
+                            </h1>
+                        </span>
+                    </div>
+                    <div className="flex flex-col gap-3 h-full pt-3 border-r border-solid border-zinc-200 dark:border-none">
+                        {sidebarMenu?.length > 0 &&
+                            sidebarMenu.map((section, index) => <Section key={index} section={section} />)}
+                    </div>
                 </div>
             </div>
         </div>
-    );
+    ) : null;
 }
 
 export default Sidebar;

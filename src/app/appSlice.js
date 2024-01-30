@@ -10,11 +10,14 @@ const appSlice = createSlice({
         toggleSidebar: (state) => {
             state.isSidebarOpen = !state.isSidebarOpen;
         },
+        closeSidebar: (state) => {
+            state.isSidebarOpen = false;
+        },
         toggleTheme: (state) => {
             state.isLightTheme = !state.isLightTheme;
         },
     },
 });
 
-export const { toggleSidebar, toggleTheme } = appSlice.actions;
+export const { toggleSidebar, closeSidebar, toggleTheme } = appSlice.actions;
 export default appSlice.reducer;

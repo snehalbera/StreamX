@@ -1,4 +1,6 @@
 import Header from "./Header";
-import Home from "./Home";
+import MainContainer from "./MainContainer";
+import VideoContainer from "./VideoContainer";
+import WatchPage from "./WatchPage";
 
-export { Header, Home };
+export { Header, MainContainer, VideoContainer, WatchPage };
